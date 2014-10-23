@@ -14,7 +14,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import android.os.AsyncTask;
 import android.util.Log;
 
-/*
+/**
  * AsyncTask class for handling http tasks.
  * @param HttpHandler.
  * @returns The response as a string.
