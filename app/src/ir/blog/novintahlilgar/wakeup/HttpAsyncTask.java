@@ -7,8 +7,6 @@ import java.io.InputStreamReader;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
-import org.apache.http.client.ResponseHandler;
-import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
 
 import android.os.AsyncTask;
@@ -49,14 +47,20 @@ public class HttpAsyncTask extends AsyncTask<HttpHandler, Void, String> {
 				result = convertInputStreamToString(inputStream);
 			else
 				result = "Did not work!";
-
+			Log.i("doInBackResult", result);
+			
 		} catch (Exception e) {
 			Log.d("InputStream", e.getLocalizedMessage());
 		}
-
+		Log.i("returnResult",result);
 		return result;
 
 	}
+	
+	 @Override
+	    protected void onPostExecute(String result) {
+	        httpHandler.onResponse(result);
+	    }
 
 
 	private static String convertInputStreamToString(InputStream inputStream)

@@ -4,4 +4,5 @@
     <string name="app_name">WakeUp</string>
     <string name="hello_world">Hello world!</string>
 
+    <string name="button_wake_up">Wake Someone!</string>
 </resources>
