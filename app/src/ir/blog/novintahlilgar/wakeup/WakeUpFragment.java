@@ -58,33 +58,33 @@ public class WakeUpFragment extends Fragment{
 			@Override
 			public void onClick(View v) {
 				Log.i("buttonWake", "clicked");
-				new HttpHandler() {
-					
-					@Override
-					public void onResponse(String result) {
-						Log.i("wakeResult",result);
-						if(result != null){
-							if(result != "0"){
-								Log.i("result", result);
-								String number = "tel:" + result;
-								Intent call = new Intent(Intent.ACTION_CALL);
-								Log.i("number",number);
-								call.setData(Uri.parse(number));
-								startActivity(call);
-							}
-						}else {
-							Log.i("wakeResultNull",result);
-						}
-						
-					}
-					
-					@Override
-					public HttpUriRequest getHttpRequestMethod() {
-						return new HttpGet(rootUrl+"user="+username+"&pass="+password);
-					}
-				}.execute();
+//				new HttpHandler() {
+//					
+//					@Override
+//					public void onResponse(String result) {
+//						Log.i("wakeResult",result);
+//						if(result != null){
+//							if(result != "0"){
+//								Log.i("result", result);
+//								String number = "tel:" + result;
+//								Intent call = new Intent(Intent.ACTION_CALL);
+//								Log.i("number",number);
+//								call.setData(Uri.parse(number));
+//								startActivity(call);
+//							}
+//						}else {
+//							Log.i("wakeResultNull",result);
+//						}
+//						
+//					}
+//					
+//					@Override
+//					public HttpUriRequest getHttpRequestMethod() {
+//						return new HttpGet(rootUrl+"user="+username+"&pass="+password);
+//					}
+//				}.execute();
 				
-//				httpHandler.execute();
+				httpHandler.execute();
 				//TODO: disable button until the request returns
 			}
 		});
