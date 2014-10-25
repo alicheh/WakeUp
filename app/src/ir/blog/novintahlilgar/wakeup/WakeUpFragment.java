@@ -22,7 +22,7 @@ public class WakeUpFragment extends Fragment{
 		//TODO: get username and password from sharedpreferences
 		username = "username";
 		password = "username";
-		rootUrl = "http://wake.huri.ir/call/?";
+		rootUrl = "http://wake.huri.ir/wake/?";
 		final HttpHandler httpHandler = new HttpHandler() {
 			
 			@Override
