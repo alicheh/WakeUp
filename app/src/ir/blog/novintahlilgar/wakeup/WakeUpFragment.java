@@ -13,9 +13,12 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 
 public class WakeUpFragment extends Fragment{
 	String username, password, rootUrl;
+	ProgressBar mProgressBar;
+	Button mButton;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -39,6 +42,8 @@ public class WakeUpFragment extends Fragment{
 				}else {
 					Log.i("wakeResultNull",result);
 				}
+				mProgressBar.setVisibility(View.INVISIBLE);
+				mButton.setVisibility(View.VISIBLE);
 				
 			}
 			
@@ -51,41 +56,21 @@ public class WakeUpFragment extends Fragment{
 		
 		View v = inflater.inflate(R.layout.fragment_wake_up, container,false);
 		
-		Button btWakeUp = (Button) v.findViewById(R.id.button_wake_up);
-
-		btWakeUp.setOnClickListener(new OnClickListener() {
+		mButton = (Button) v.findViewById(R.id.button_wake_up);
+		mProgressBar = (ProgressBar) v.findViewById(R.id.progress_bar_wake);
+		mProgressBar.setVisibility(View.INVISIBLE);
+		mButton.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
 				Log.i("buttonWake", "clicked");
-//				new HttpHandler() {
-//					
-//					@Override
-//					public void onResponse(String result) {
-//						Log.i("wakeResult",result);
-//						if(result != null){
-//							if(result != "0"){
-//								Log.i("result", result);
-//								String number = "tel:" + result;
-//								Intent call = new Intent(Intent.ACTION_CALL);
-//								Log.i("number",number);
-//								call.setData(Uri.parse(number));
-//								startActivity(call);
-//							}
-//						}else {
-//							Log.i("wakeResultNull",result);
-//						}
-//						
-//					}
-//					
-//					@Override
-//					public HttpUriRequest getHttpRequestMethod() {
-//						return new HttpGet(rootUrl+"user="+username+"&pass="+password);
-//					}
-//				}.execute();
+				
+				mProgressBar.setVisibility(View.VISIBLE);
+				mButton.setVisibility(View.INVISIBLE);
 				
 				httpHandler.execute();
 				//TODO: disable button until the request returns
+				
 			}
 		});
 		

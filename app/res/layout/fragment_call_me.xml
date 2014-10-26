@@ -1,16 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/relative_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal" >
-
+    android:layout_height="match_parent" >
+	<ProgressBar 
+    android:id="@+id/progress_bar"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerInParent="true"/>
+    
     <LinearLayout
-        android:layout_width="0dp"
+        android:id="@+id/linear_layout"
+        android:layout_width="match_parent"
         android:layout_height="fill_parent"
-        android:layout_weight="2"
-        android:orientation="vertical" >
+        android:orientation="horizontal" >
 
-<!--         <LinearLayout
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="2"
+            android:orientation="vertical" >
+
+            <!--
+             <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal" >
@@ -26,42 +38,43 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1" />
-        </LinearLayout> -->
-        <DatePicker 
-            android:id="@+id/date_picker"
-            android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2"
-            android:spinnersShown="true"
-            android:calendarViewShown="false"
-            />
+        </LinearLayout>
+            -->
 
-        <TimePicker
-            android:id="@+id/time_picker"
-            android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2"
-             />
+            <DatePicker
+                android:id="@+id/date_picker"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:calendarViewShown="false"
+                android:spinnersShown="true" />
 
-        <EditText
-            android:id="@+id/text_phone_number"
-            android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:inputType="phone" />
+            <TimePicker
+                android:id="@+id/time_picker"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2" />
+
+            <EditText
+                android:id="@+id/text_phone_number"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:inputType="phone" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1" >
+
+            <Button
+                android:id="@+id/button_call_me"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/button_call_me" />
+        </RelativeLayout>
     </LinearLayout>
 
-    <RelativeLayout
-        android:layout_width="0dp"
-        android:layout_height="fill_parent"
-        android:layout_weight="1" >
-
-        <Button
-            android:id="@+id/button_call_me"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="@string/button_call_me" />
-    </RelativeLayout>
-
-</LinearLayout>
+</RelativeLayout>

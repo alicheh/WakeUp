@@ -22,6 +22,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -38,6 +41,8 @@ public class CallMeFragment extends Fragment {
 	TimePicker mTimePicker;
 	EditText mPhoneNumber;
 	String username, password, rootUrl, date, time, phone;
+	ProgressBar mProgressBar;
+	LinearLayout mLinearLayout;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -76,6 +81,8 @@ public class CallMeFragment extends Fragment {
 					Log.i("wakeResultNull", result);
 				}
 
+				mProgressBar.setVisibility(View.GONE);
+				mLinearLayout.setVisibility(View.VISIBLE);
 			}
 
 			@Override
@@ -87,11 +94,15 @@ public class CallMeFragment extends Fragment {
 		};
 
 		View v = inflater.inflate(R.layout.fragment_call_me, container, false);
-
+		
+		mLinearLayout = (LinearLayout) v.findViewById(R.id.linear_layout);
+		mProgressBar = (ProgressBar) v.findViewById(R.id.progress_bar);
 		mDatePicker = (DatePicker) v.findViewById(R.id.date_picker);
 		mTimePicker = (TimePicker) v.findViewById(R.id.time_picker);
 		mPhoneNumber = (EditText) v.findViewById(R.id.text_phone_number);
 		Button btCallMe = (Button) v.findViewById(R.id.button_call_me);
+		
+		mProgressBar.setVisibility(View.INVISIBLE);
 		btCallMe.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -109,6 +120,8 @@ public class CallMeFragment extends Fragment {
 				Log.i("time:", time);
 				Log.i("phone", phone);
 				// TODO: dissable button.
+				mProgressBar.setVisibility(View.VISIBLE);
+				mLinearLayout.setVisibility(View.INVISIBLE);
 				httpHandler.execute();
 
 			}
