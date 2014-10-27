@@ -10,9 +10,7 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.Fragment;
 import android.app.TimePickerDialog;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.format.DateFormat;
@@ -45,19 +43,13 @@ public class CallMeFragment extends Fragment {
 	String username, password, rootUrl, date, time, phone;
 	ProgressBar mProgressBar;
 	LinearLayout mLinearLayout;
-	private static final String usernameString = "username";
-	private static final String passwordString = "password";
-	private static final String sharedPrefName = "sharedPref";
-	SharedPreferences sharedPref;
-	
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		// TODO: get username and password from sharedpreferences
-		
-		sharedPref = getActivity().getSharedPreferences(sharedPrefName, Context.MODE_PRIVATE);
-		username = sharedPref.getString(usernameString, "");
-		password = sharedPref.getString(passwordString, "");
+		username = "username";
+		password = "username";
 		rootUrl = "http://wake.huri.ir/call/?";
 		final HttpHandler httpHandler = new HttpHandler() {
 
