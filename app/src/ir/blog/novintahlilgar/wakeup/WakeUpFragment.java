@@ -4,7 +4,9 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpUriRequest;
 
 import android.app.Fragment;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,12 +21,17 @@ public class WakeUpFragment extends Fragment{
 	String username, password, rootUrl;
 	ProgressBar mProgressBar;
 	Button mButton;
+	private static final String usernameString = "username";
+	private static final String passwordString = "password";
+	private static final String sharedPrefName = "sharedPref";
+	SharedPreferences sharedPref;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		//TODO: get username and password from sharedpreferences
-		username = "username";
-		password = "username";
+		sharedPref = getActivity().getSharedPreferences(sharedPrefName, Context.MODE_PRIVATE);
+		username = sharedPref.getString(usernameString, "");
+		password = sharedPref.getString(passwordString, "");
 		rootUrl = "http://wake.huri.ir/wake/?";
 		final HttpHandler httpHandler = new HttpHandler() {
 			
